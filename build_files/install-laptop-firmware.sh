@@ -38,7 +38,7 @@ else
 fi
 
 # --- SOF (Sound Open Firmware) package ---
-rpm -q sof-firmware || dnf5 install -y sof-firmware
+rpm -q alsa-sof-firmware || dnf5 install -y alsa-sof-firmware
 
 # --- Intel VA-API hardware video acceleration ---
 dnf5 install -y intel-media-driver
