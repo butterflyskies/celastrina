@@ -3,3 +3,10 @@ _build_*
 output
 _build-*/**
 secrets
+
+# Proprietary firmware blobs (extracted from Windows installation)
+build_files/firmware/**/*.bin
+build_files/firmware/**/*.fw
+build_files/firmware/**/*.tplg
+build_files/firmware/ish/
+build_files/firmware/audio/
