@@ -15,6 +15,7 @@ function install-system() {
     /ctx/install-observability.sh
     /ctx/configure-xdg-portal.sh
     /ctx/configure-signing-policy.sh
+    /ctx/configure-branding.sh
 }
 
 set +x

@@ -1,0 +1,2 @@
+# Encrypt proprietary firmware blobs with git-crypt
+build_files/firmware/**/*.bin filter=git-crypt diff=git-crypt
