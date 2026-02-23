@@ -52,9 +52,11 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Decrypt firmware blobs
+        env:
+          GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
         run: |
           sudo apt-get install -y git-crypt
-          echo "${{ secrets.GIT_CRYPT_KEY }}" | base64 -d > /tmp/git-crypt.key
+          echo "$GIT_CRYPT_KEY" | base64 -d > /tmp/git-crypt.key
           git-crypt unlock /tmp/git-crypt.key
           rm -f /tmp/git-crypt.key
 
