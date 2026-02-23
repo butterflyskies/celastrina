@@ -18,6 +18,9 @@ set -ouex pipefail
 #
 # Copy firmware into build_files/firmware/ before running the build:
 #   cp -a /mnt/docker-swarm-volumes/firmware/yoga9-14ill10/* build_files/firmware/
+#
+# The following packages are already in bazzite:stable and don't need installing:
+#   alsa-sof-firmware, libva-intel-media-driver, iio-sensor-proxy
 ###############################################################################
 
 # --- Intel Sensor Hub (ISH) firmware ---
@@ -36,15 +39,6 @@ if [ -d /ctx/firmware/audio ]; then
 else
 	echo "WARNING: No audio firmware found at /ctx/firmware/audio — skipping"
 fi
-
-# --- SOF (Sound Open Firmware) package ---
-rpm -q alsa-sof-firmware || dnf5 install -y alsa-sof-firmware
-
-# --- Intel VA-API hardware video acceleration ---
-dnf5 install -y intel-media-driver
-
-# --- IIO Sensor Proxy (accelerometer / auto-rotation) ---
-dnf5 install -y iio-sensor-proxy
 
 # NOTE: Kernel 6.12+ is required for full Lunar Lake support. Bazzite stable
 # currently ships a sufficiently recent kernel. If the base image ever pins to
