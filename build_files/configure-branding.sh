@@ -17,11 +17,14 @@ if [ -z "${CELASTRINA_VARIANT:-}" ]; then
 	fi
 fi
 
+# Install logo
+install -Dm644 /ctx/celastrina-logo.png /usr/share/pixmaps/celastrina-logo.png
+
 # KDE About System
 mkdir -p /etc/xdg
 cat >/etc/xdg/kcm-about-distrorc <<EOF
 [General]
-LogoPath=/usr/share/pixmaps/system-logo-white.png
+LogoPath=/usr/share/pixmaps/celastrina-logo.png
 Name=Celastrina
 Website=https://github.com/butterflyskies/celastrina
 Variant=${CELASTRINA_VARIANT}

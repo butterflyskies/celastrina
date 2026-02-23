@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252 252">
+  <defs>
+    <!-- Celastrina wing gradient — azure blue to periwinkle -->
+    <radialGradient id="wingLeft" cx="35%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#93C5FD"/>
+      <stop offset="45%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </radialGradient>
+    <radialGradient id="wingRight" cx="65%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#93C5FD"/>
+      <stop offset="45%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </radialGradient>
+    <radialGradient id="hindLeft" cx="40%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#A5B4FC"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </radialGradient>
+    <radialGradient id="hindRight" cx="60%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#A5B4FC"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </radialGradient>
+    <!-- Subtle glow behind butterfly -->
+    <radialGradient id="glow" cx="50%" cy="48%" r="45%">
+      <stop offset="0%" stop-color="#DBEAFE" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#DBEAFE" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Wing edge shimmer -->
+    <linearGradient id="edgeShimmer" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E0E7FF" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#C7D2FE" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#E0E7FF" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background glow -->
+  <circle cx="126" cy="121" r="110" fill="url(#glow)"/>
+
+  <!-- Left forewing -->
+  <path d="M 122,110 C 108,75 85,42 50,30 C 35,26 22,35 20,50 C 18,70 30,95 55,108 C 70,116 95,118 122,115 Z"
+        fill="url(#wingLeft)" opacity="0.95"/>
+  <!-- Left forewing vein lines -->
+  <path d="M 122,112 C 105,85 78,55 50,35" stroke="#2563EB" stroke-width="0.8" fill="none" opacity="0.3"/>
+  <path d="M 120,114 C 100,95 70,70 38,52" stroke="#2563EB" stroke-width="0.6" fill="none" opacity="0.2"/>
+  <path d="M 118,115 C 95,100 65,88 35,75" stroke="#2563EB" stroke-width="0.5" fill="none" opacity="0.15"/>
+  <!-- Left forewing edge highlight -->
+  <path d="M 122,110 C 108,75 85,42 50,30 C 35,26 22,35 20,50"
+        stroke="url(#edgeShimmer)" stroke-width="1.5" fill="none"/>
+
+  <!-- Right forewing -->
+  <path d="M 130,110 C 144,75 167,42 202,30 C 217,26 230,35 232,50 C 234,70 222,95 197,108 C 182,116 157,118 130,115 Z"
+        fill="url(#wingRight)" opacity="0.95"/>
+  <!-- Right forewing vein lines -->
+  <path d="M 130,112 C 147,85 174,55 202,35" stroke="#2563EB" stroke-width="0.8" fill="none" opacity="0.3"/>
+  <path d="M 132,114 C 152,95 182,70 214,52" stroke="#2563EB" stroke-width="0.6" fill="none" opacity="0.2"/>
+  <path d="M 134,115 C 157,100 187,88 217,75" stroke="#2563EB" stroke-width="0.5" fill="none" opacity="0.15"/>
+  <!-- Right forewing edge highlight -->
+  <path d="M 130,110 C 144,75 167,42 202,30 C 217,26 230,35 232,50"
+        stroke="url(#edgeShimmer)" stroke-width="1.5" fill="none"/>
+
+  <!-- Left hindwing -->
+  <path d="M 120,118 C 95,122 60,130 38,155 C 28,168 30,185 42,192 C 58,200 80,195 98,178 C 110,165 118,145 120,125 Z"
+        fill="url(#hindLeft)" opacity="0.9"/>
+  <!-- Left hindwing veins -->
+  <path d="M 120,120 C 90,135 60,155 42,180" stroke="#4338CA" stroke-width="0.6" fill="none" opacity="0.25"/>
+  <path d="M 119,125 C 95,140 68,165 52,188" stroke="#4338CA" stroke-width="0.5" fill="none" opacity="0.15"/>
+  <!-- Left hindwing spots (characteristic of Celastrina) -->
+  <circle cx="72" cy="160" r="4" fill="#1E3A5F" opacity="0.3"/>
+  <circle cx="58" cy="172" r="3" fill="#1E3A5F" opacity="0.25"/>
+  <circle cx="82" cy="170" r="3.5" fill="#1E3A5F" opacity="0.2"/>
+
+  <!-- Right hindwing -->
+  <path d="M 132,118 C 157,122 192,130 214,155 C 224,168 222,185 210,192 C 194,200 172,195 154,178 C 142,165 134,145 132,125 Z"
+        fill="url(#hindRight)" opacity="0.9"/>
+  <!-- Right hindwing veins -->
+  <path d="M 132,120 C 162,135 192,155 210,180" stroke="#4338CA" stroke-width="0.6" fill="none" opacity="0.25"/>
+  <path d="M 133,125 C 157,140 184,165 200,188" stroke="#4338CA" stroke-width="0.5" fill="none" opacity="0.15"/>
+  <!-- Right hindwing spots -->
+  <circle cx="180" cy="160" r="4" fill="#1E3A5F" opacity="0.3"/>
+  <circle cx="194" cy="172" r="3" fill="#1E3A5F" opacity="0.25"/>
+  <circle cx="170" cy="170" r="3.5" fill="#1E3A5F" opacity="0.2"/>
+
+  <!-- Body -->
+  <ellipse cx="126" cy="130" rx="4" ry="22" fill="#1E293B" opacity="0.85"/>
+  <!-- Body segments -->
+  <line x1="122" y1="118" x2="130" y2="118" stroke="#334155" stroke-width="0.5" opacity="0.4"/>
+  <line x1="122" y1="124" x2="130" y2="124" stroke="#334155" stroke-width="0.5" opacity="0.4"/>
+  <line x1="122" y1="130" x2="130" y2="130" stroke="#334155" stroke-width="0.5" opacity="0.4"/>
+  <line x1="122" y1="136" x2="130" y2="136" stroke="#334155" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Head -->
+  <circle cx="126" cy="106" r="5" fill="#1E293B" opacity="0.85"/>
+
+  <!-- Antennae -->
+  <path d="M 124,103 C 118,88 108,78 100,72" stroke="#1E293B" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="99" cy="71" r="2.5" fill="#3B82F6" opacity="0.7"/>
+  <path d="M 128,103 C 134,88 144,78 152,72" stroke="#1E293B" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="153" cy="71" r="2.5" fill="#3B82F6" opacity="0.7"/>
+</svg>
