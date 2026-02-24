@@ -20,11 +20,6 @@ function install-system() {
 	# Laptop-specific: firmware and hardware enablement
 	/ctx/install-laptop-firmware.sh
 	/ctx/install-laptop-extras.sh
-
-	# Work around BIB depsolve bug (osbuild/bootc-image-builder#1188):
-	# BIB reads repo configs from the image but doesn't rewrite file:// gpgkey
-	# paths into the image rootfs, causing depsolve to fail for terra-mesa.
-	sed -i 's/^gpgcheck=1/gpgcheck=0/' /etc/yum.repos.d/terra-mesa.repo
 }
 
 set +x
