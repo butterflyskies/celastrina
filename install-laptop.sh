@@ -86,7 +86,26 @@ prompt_secret "Password for ${USERNAME}" USER_PASSWORD
 
 echo ""
 info "Tang auto-unlock (optional)"
-read -rp "Tang server URL [leave blank to skip, e.g. http://192.168.0.1:7500]: " TANG_URL || true
+read -rp "Tang server URL [leave blank to skip, e.g. http://192.168.0.1:8888]: " TANG_URL || true
+
+if [[ -n "${TANG_URL:-}" ]]; then
+	info "Validating Tang server at ${TANG_URL}..."
+	if ! curl -sf --max-time 5 "${TANG_URL}/adv" >/dev/null; then
+		echo ""
+		echo "ERROR: Tang server unreachable at ${TANG_URL}/adv"
+		echo "       Verify the URL and that the server is up before proceeding."
+		echo "       (Leave URL blank to install without Tang auto-unlock.)"
+		echo ""
+		read -rp "Continue anyway without Tang? [y/N] " skip_tang
+		if [[ "$skip_tang" =~ ^[Yy]$ ]]; then
+			TANG_URL=""
+		else
+			exit 1
+		fi
+	else
+		info "Tang server reachable — will enroll after LUKS setup."
+	fi
+fi
 
 # ── Phase 2: Partition ───────────────────────────────────────────────────────
 
