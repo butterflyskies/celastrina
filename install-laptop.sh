@@ -84,6 +84,10 @@ read -rp "Username: " USERNAME
 [[ -n "$USERNAME" ]] || die "Username cannot be empty"
 prompt_secret "Password for ${USERNAME}" USER_PASSWORD
 
+echo ""
+info "Tang auto-unlock (optional)"
+read -rp "Tang server URL [leave blank to skip, e.g. http://192.168.0.1:7500]: " TANG_URL || true
+
 # ── Phase 2: Partition ───────────────────────────────────────────────────────
 
 info "Partitioning ${DISK}..."
@@ -109,6 +113,23 @@ echo -n "$LUKS_PASSPHRASE" | cryptsetup luksOpen "$ROOT_PART" "$LUKS_NAME" -
 
 LUKS_UUID=$(cryptsetup luksUUID "$ROOT_PART")
 info "LUKS UUID: ${LUKS_UUID}"
+
+# ── Phase 3.5: Clevis Tang enrollment ───────────────────────────────────────
+
+if [[ -n "${TANG_URL:-}" ]]; then
+	info "Enrolling LUKS volume with Clevis Tang ($TANG_URL)..."
+	if command -v clevis &>/dev/null; then
+		if echo -n "$LUKS_PASSPHRASE" | clevis luks bind -f -k - -d "$ROOT_PART" tang "{\"url\":\"$TANG_URL\"}"; then
+			info "Tang enrollment successful — disk will auto-unlock via $TANG_URL"
+		else
+			echo "WARNING: Tang enrollment failed. Enroll manually after first boot:"
+			echo "  sudo clevis luks bind -f -d $ROOT_PART tang '{\"url\":\"$TANG_URL\"}'"
+		fi
+	else
+		echo "WARNING: clevis not found in live environment. Enroll manually after first boot:"
+		echo "  sudo clevis luks bind -f -d $ROOT_PART tang '{\"url\":\"$TANG_URL\"}'"
+	fi
+fi
 
 info "Creating filesystems..."
 mkfs.btrfs -f -L root "$LUKS_MAPPER"
