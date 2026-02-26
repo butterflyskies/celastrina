@@ -151,7 +151,7 @@ podman run --rm --privileged --pid=host \
 info "Creating user account: ${USERNAME}"
 
 # Find the ostree deployment root (there should be exactly one after fresh install)
-DEPLOY_ROOT=$(find "${TARGET}/ostree/deploy" -maxdepth 4 -mindepth 4 -type d | head -1)
+DEPLOY_ROOT=$(find "${TARGET}/ostree/deploy" -maxdepth 3 -mindepth 3 -type d | head -1)
 [[ -d "$DEPLOY_ROOT" ]] || die "Could not locate ostree deployment root"
 info "Deployment root: ${DEPLOY_ROOT}"
 

@@ -61,7 +61,7 @@ jobs:
           rm -f /tmp/git-crypt.key
 
       - name: Mount BTRFS for podman storage
-        uses: ublue-os/container-storage-action@main
+        uses: ublue-os/container-storage-action@dc1f4c8f17b672069e921f001132f7cf98a423a6 # main
 
       - name: Get current date
         id: date
