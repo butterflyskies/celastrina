@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="build_files/celastrina-logo.svg" alt="Celastrina logo" width="128">
+</p>
+
 # Celastrina
 
 Custom [Bazzite](https://bazzite.gg/) images for my personal machines, built on Fedora Atomic/OSTree. Named after [*Celastrina*](https://en.wikipedia.org/wiki/Celastrina), the azure butterfly genus.

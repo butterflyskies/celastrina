@@ -124,7 +124,7 @@ build-laptop $target_image=laptop_image_name $tag=default_tag:
 
 # Build an ISO for the laptop variant
 [group('Build Laptop')]
-build-iso-laptop $target_image=("localhost/" + laptop_image_name) $tag=default_tag: && (_build-bib target_image tag "iso" "disk_config/iso.toml")
+build-iso-laptop $target_image=("localhost/" + laptop_image_name) $tag=default_tag: && (_build-bib target_image tag "iso" "disk_config/iso-laptop.toml")
 
 # Build a QCOW2 image for the laptop variant
 [group('Build Laptop')]
