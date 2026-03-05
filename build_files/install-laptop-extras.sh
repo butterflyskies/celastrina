@@ -13,3 +13,8 @@ set -ouex pipefail
 
 # Keyboard backlight control
 dnf5 install -y brightnessctl
+
+# Blacklist iwlwifi_mld — Intel BE201 WiFi 7 driver causes kernel panic on
+# Lunar Lake during driver init. Regular iwlwifi works fine as fallback.
+# See: https://github.com/butterflyskies/celastrina/issues/5#2
+echo 'blacklist iwlwifi_mld' > /usr/lib/modprobe.d/blacklist-iwlwifi-mld.conf
