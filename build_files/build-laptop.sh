@@ -15,7 +15,7 @@ function install-system() {
 	/ctx/install-observability.sh
 	/ctx/configure-xdg-portal.sh
 	/ctx/configure-signing-policy.sh
-	CELASTRINA_VARIANT="Laptop (Lunar Lake)" /ctx/configure-branding.sh
+	CELASTRINA_VARIANT="Laptop (Lunar Lake)" CELASTRINA_IMAGE_NAME="celastrina-laptop" /ctx/configure-branding.sh
 
 	# Laptop-specific: firmware and hardware enablement
 	/ctx/install-laptop-firmware.sh
