@@ -39,6 +39,14 @@ Website=https://github.com/butterflyskies/celastrina
 Variant=${CELASTRINA_VARIANT}
 EOF
 
+# ── MOTD ─────────────────────────────────────────────────────────────────────
+# Replace Bazzite's MOTD with Celastrina branding and update the renderer
+# to point at the new file.
+
+install -Dm644 /ctx/celastrina-motd.md /usr/share/ublue-os/motd/celastrina.md
+rm -f /usr/share/ublue-os/motd/bazzite.md
+sed -i 's|/usr/share/ublue-os/motd/bazzite\.md|/usr/share/ublue-os/motd/celastrina.md|g' /usr/libexec/ublue-motd
+
 # ── /usr/lib/os-release ─────────────────────────────────────────────────────
 # Patch the base image's os-release in place, preserving fields we don't touch
 # (VERSION, VERSION_ID, ID_LIKE, OSTREE_VERSION, SUPPORT_END, etc.)
