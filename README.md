@@ -12,8 +12,8 @@ Formerly `butterfly-ublue` — see [butterflysky/butterfly-ublue](https://github
 
 ### Desktop (`celastrina`)
 
-Based on `bazzite-nvidia-open:stable`. Targets my desktop with NVIDIA GPUs. Includes DKMS-built
-NVIDIA modules, Hyprland, Ceph client, observability tools, and more.
+Based on `bazzite-nvidia-open:stable`. Targets my desktop with NVIDIA GPUs (open kernel modules
+from the base image). Includes Hyprland, Ceph client, observability tools, and more.
 
 ```
 ghcr.io/butterflyskies/celastrina:latest
