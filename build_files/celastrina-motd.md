@@ -10,5 +10,3 @@
 | `brew help` | Manage command line packages |
 
 %TIP%
-- **** [Report an issue](https://github.com/butterflyskies/celastrina/issues)
-- **󰊤** [GitHub](https://github.com/butterflyskies/celastrina)
