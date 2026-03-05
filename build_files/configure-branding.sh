@@ -39,6 +39,31 @@ Website=https://github.com/butterflyskies/celastrina
 Variant=${CELASTRINA_VARIANT}
 EOF
 
+# ── image-info.json ──────────────────────────────────────────────────────────
+# Patch the ublue image metadata used by ublue-motd, fastfetch, etc.
+
+IMAGE_INFO="/usr/share/ublue-os/image-info.json"
+
+# Source os-release for fedora version before we patch it
+# shellcheck disable=SC1091
+source /usr/lib/os-release
+
+IMAGE_VERSION="${VERSION_ID}.$(date -u +%Y%m%d)"
+
+jq \
+	--arg name "$CELASTRINA_IMAGE_NAME" \
+	--arg vendor "butterflyskies" \
+	--arg ref "ostree-image-signed:docker://ghcr.io/butterflyskies/${CELASTRINA_IMAGE_NAME}" \
+	--arg version "$IMAGE_VERSION" \
+	--arg pretty "Stable (F${IMAGE_VERSION})" \
+	'.
+	| ."image-name" = $name
+	| ."image-vendor" = $vendor
+	| ."image-ref" = $ref
+	| .version = $version
+	| ."version-pretty" = $pretty
+	' "$IMAGE_INFO" > "${IMAGE_INFO}.tmp" && mv "${IMAGE_INFO}.tmp" "$IMAGE_INFO"
+
 # ── MOTD ─────────────────────────────────────────────────────────────────────
 # Replace Bazzite's MOTD with Celastrina branding and update the renderer
 # to point at the new file.
