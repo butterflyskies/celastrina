@@ -24,9 +24,22 @@ just lint               # shellcheck all .sh files
 just format             # shfmt all .sh files
 ```
 
-## Active Branch / PR
-- Branch: `feature/laptop-lunar-lake`
-- PR #2: "Add Celastrina Laptop variant for Yoga 9 2-in-1" — OPEN
+## Key Issues
+- #5: Laptop post-install fixes (LUKS naming, iwlwifi panic, Tang, EFI label, installer improvements)
+- #8: Rebrand image from Bazzite to Celastrina (os-release, image-info.json, MOTD)
+
+## Branding
+`configure-branding.sh` handles all downstream branding:
+- KDE About System (`/etc/xdg/kcm-about-distrorc`)
+- `/usr/share/ublue-os/image-info.json` (ublue-motd, fastfetch)
+- `/usr/share/ublue-os/motd/celastrina.md` (replaces bazzite.md, patches `/usr/libexec/ublue-motd`)
+- `/usr/lib/os-release` (sed patches in-place, preserves upstream fields)
+- Desktop defaults to `CELASTRINA_IMAGE_NAME=celastrina`; laptop passes `celastrina-laptop`
+
+## Laptop Hardware Notes
+- iwlwifi_mld (Intel BE201 WiFi 7) causes kernel panic on Yoga 9 — blacklisted in image
+- LUKS boot fix: use `rd.luks.name=<UUID>=luks-root` instead of `rd.luks.uuid` (karg, not image change)
+- Kernel cmdline managed via `rpm-ostree kargs` on installed system
 
 ## Tech Stack
 - Bash scripts (Justfile recipes, installer)
