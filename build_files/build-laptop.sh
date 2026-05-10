@@ -14,6 +14,7 @@ function install-system() {
 	/ctx/install-chrome.sh
 	/ctx/install-wezterm.sh
 	/ctx/install-observability.sh
+	/ctx/install-thunderbolt.sh
 	/ctx/configure-xdg-portal.sh
 	/ctx/configure-signing-policy.sh
 	CELASTRINA_VARIANT="Laptop (Lunar Lake)" CELASTRINA_IMAGE_NAME="celastrina-laptop" /ctx/configure-branding.sh
