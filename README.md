@@ -19,7 +19,7 @@ from the base image). Includes Hyprland, Ceph client, observability tools, and m
 ghcr.io/butterflyskies/celastrina:latest
 ```
 
-### Laptop (`celastrina-laptop`)
+### Yoga 9 (`celastrina-yoga9`)
 
 Based on `bazzite:stable` (no NVIDIA drivers). Targets the **Lenovo Yoga 9 2-in-1 14ILL10**:
 
@@ -31,7 +31,7 @@ Includes Intel VA-API acceleration, ISH/audio firmware from the Windows
 extraction, power management, and sensor support for auto-rotation.
 
 ```
-ghcr.io/butterflyskies/celastrina-laptop:latest
+ghcr.io/butterflyskies/celastrina-yoga9:latest
 ```
 
 **Kernel requirement:** Lunar Lake needs kernel 6.12+. Bazzite stable currently ships a
@@ -45,20 +45,20 @@ sufficiently recent kernel.
 just build
 ```
 
-### Laptop
+### Yoga 9
 
 Firmware files must be staged before building (see `build_files/firmware/README.md`):
 
 ```bash
 cp -a /mnt/docker-swarm-volumes/firmware/yoga9-14ill10/* build_files/firmware/
-just build-laptop
+just build-yoga9
 ```
 
 ### Bootable ISOs
 
 ```bash
 just build-iso          # Desktop ISO
-just build-iso-laptop   # Laptop ISO
+just build-iso-yoga9    # Yoga 9 ISO
 ```
 
 ## Lint & Format

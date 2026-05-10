@@ -1,5 +1,5 @@
 export image_name := env("IMAGE_NAME", "celastrina")
-export laptop_image_name := env("LAPTOP_IMAGE_NAME", "celastrina-laptop")
+export yoga9_image_name := env("YOGA9_IMAGE_NAME", "celastrina-yoga9")
 export default_tag := env("DEFAULT_TAG", "latest")
 export bib_image := env("BIB_IMAGE", "quay.io/centos-bootc/bootc-image-builder:latest")
 
@@ -95,7 +95,6 @@ build $target_image=image_name $tag=default_tag:
         BUILD_ARGS+=("--build-arg" "SHA_HEAD_SHORT=$(git rev-parse --short HEAD)")
     fi
 
-    # secrets are already imported
     podman build \
         "${BUILD_ARGS[@]}" \
         --pull=newer \
@@ -105,9 +104,9 @@ build $target_image=image_name $tag=default_tag:
         --secret id=dkms_cert,src=DKMS_CERT,type=env \
         .
 
-# Build the laptop image (Intel Lunar Lake, no NVIDIA)
-[group('Build Laptop')]
-build-laptop $target_image=laptop_image_name $tag=default_tag:
+# Build the Yoga 9 image (Intel Lunar Lake, no NVIDIA)
+[group('Build Yoga 9')]
+build-yoga9 $target_image=yoga9_image_name $tag=default_tag:
     #!/usr/bin/env bash
 
     BUILD_ARGS=()
@@ -115,20 +114,28 @@ build-laptop $target_image=laptop_image_name $tag=default_tag:
         BUILD_ARGS+=("--build-arg" "SHA_HEAD_SHORT=$(git rev-parse --short HEAD)")
     fi
 
+    export DKMS_KEY="${DKMS_KEY:-}"
+    export DKMS_PIN="${DKMS_PIN:-}"
+    export DKMS_CERT="${DKMS_CERT:-}"
+
     podman build \
         "${BUILD_ARGS[@]}" \
+        --build-arg "BASE_IMAGE=ghcr.io/ublue-os/bazzite:stable" \
+        --build-arg "BUILD_SCRIPT=build-yoga9.sh" \
         --pull=newer \
         --tag "${target_image}:${tag}" \
-        -f Containerfile.laptop \
+        --secret id=dkms_key,src=DKMS_KEY,type=env \
+        --secret id=dkms_pin,src=DKMS_PIN,type=env \
+        --secret id=dkms_cert,src=DKMS_CERT,type=env \
         .
 
-# Build an ISO for the laptop variant
-[group('Build Laptop')]
-build-iso-laptop $target_image=("localhost/" + laptop_image_name) $tag=default_tag: && (_build-bib target_image tag "iso" "disk_config/iso-laptop.toml")
+# Build an ISO for the Yoga 9 variant
+[group('Build Yoga 9')]
+build-iso-yoga9 $target_image=("localhost/" + yoga9_image_name) $tag=default_tag: && (_build-bib target_image tag "iso" "disk_config/iso-yoga9.toml")
 
-# Build a QCOW2 image for the laptop variant
-[group('Build Laptop')]
-build-qcow2-laptop $target_image=("localhost/" + laptop_image_name) $tag=default_tag: && (_build-bib target_image tag "qcow2" "disk_config/disk.toml")
+# Build a QCOW2 image for the Yoga 9 variant
+[group('Build Yoga 9')]
+build-qcow2-yoga9 $target_image=("localhost/" + yoga9_image_name) $tag=default_tag: && (_build-bib target_image tag "qcow2" "disk_config/disk.toml")
 
 # Command: _rootful_load_image
 # Description: This script checks if the current user is root or running under sudo. If not, it attempts to resolve the image tag using podman inspect.

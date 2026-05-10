@@ -3,7 +3,7 @@
 set -ouex pipefail
 
 function install-system() {
-	### Install packages — laptop variant (Intel Lunar Lake, no NVIDIA)
+	### Install packages — Yoga 9 variant (Intel Lunar Lake, no NVIDIA)
 
 	# Hardware-agnostic packages (shared with desktop)
 	/ctx/install-ceph.sh
@@ -14,15 +14,16 @@ function install-system() {
 	/ctx/install-chrome.sh
 	/ctx/install-wezterm.sh
 	/ctx/install-ghostty.sh
+	/ctx/install-rio.sh
 	/ctx/install-observability.sh
 	/ctx/install-thunderbolt.sh
 	/ctx/configure-xdg-portal.sh
 	/ctx/configure-signing-policy.sh
-	CELASTRINA_VARIANT="Laptop (Lunar Lake)" CELASTRINA_IMAGE_NAME="celastrina-laptop" /ctx/configure-branding.sh
+	CELASTRINA_VARIANT="Yoga 9 (Lunar Lake)" CELASTRINA_IMAGE_NAME="celastrina-yoga9" /ctx/configure-branding.sh
 
-	# Laptop-specific: firmware and hardware enablement
-	/ctx/install-laptop-firmware.sh
-	/ctx/install-laptop-extras.sh
+	# Yoga 9-specific: firmware and hardware enablement
+	/ctx/install-yoga9-firmware.sh
+	/ctx/install-yoga9-extras.sh
 }
 
 set +x

@@ -18,11 +18,11 @@ if [ -z "${CELASTRINA_VARIANT:-}" ]; then
 	fi
 fi
 
-# Image name for os-release (e.g. "celastrina" or "celastrina-laptop").
+# Image name for os-release (e.g. "celastrina" or "celastrina-yoga9").
 # Set by calling build script; defaults to "celastrina".
 CELASTRINA_IMAGE_NAME="${CELASTRINA_IMAGE_NAME:-celastrina}"
 
-# Derive VARIANT_ID from image name (celastrina, celastrina-laptop, etc.)
+# Derive VARIANT_ID from image name (celastrina, celastrina-yoga9, etc.)
 CELASTRINA_VARIANT_ID="${CELASTRINA_IMAGE_NAME}"
 
 # Install logo

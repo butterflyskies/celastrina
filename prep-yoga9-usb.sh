@@ -1,13 +1,13 @@
 #!/usr/bin/bash
 #
-# prep-laptop-usb.sh — Prepare a Fedora CoreOS Live USB for laptop installation
+# prep-yoga9-usb.sh — Prepare a Fedora CoreOS Live USB for Yoga 9 installation
 #
 # Downloads the latest Fedora CoreOS stable live ISO, verifies it,
 # and writes it to the target USB drive.  After booting from this USB,
-# run install-laptop.sh to install Celastrina.
+# run install-yoga9.sh to install Celastrina.
 #
 # Usage:
-#   ./prep-laptop-usb.sh [/dev/sdb]
+#   ./prep-yoga9-usb.sh [/dev/sdb]
 #
 # Run from the host (not a distrobox) — requires curl, sudo, dd.
 #
@@ -77,7 +77,7 @@ USB_SIZE=$(lsblk -dno SIZE "$USB" 2>/dev/null | xargs)
 
 echo ""
 echo "┌─────────────────────────────────────────────────────────┐"
-echo "│  Celastrina Laptop — USB Prep                           │"
+echo "│  Celastrina Yoga 9 — USB Prep                           │"
 echo "│                                                         │"
 printf "│  USB:  %-49s│\n" "$USB ($USB_MODEL, $USB_SIZE)"
 printf "│  ISO:  %-49s│\n" "Fedora CoreOS $ISO_VER"
@@ -98,11 +98,11 @@ echo ""
 echo "┌─────────────────────────────────────────────────────────┐"
 echo "│  Done! USB is ready to boot.                            │"
 echo "│                                                         │"
-echo "│  Boot the laptop from this USB, then run:               │"
+echo "│  Boot the Yoga 9 from this USB, then run:               │"
 echo "│                                                         │"
 echo "│    curl -LO https://raw.githubusercontent.com/          │"
-echo "│      butterflyskies/celastrina/main/install-laptop.sh   │"
-echo "│    sudo bash install-laptop.sh                          │"
+echo "│      butterflyskies/celastrina/main/install-yoga9.sh    │"
+echo "│    sudo bash install-yoga9.sh                           │"
 echo "│                                                         │"
 echo "│  Tang server: http://192.168.0.1:8888                   │"
 echo "└─────────────────────────────────────────────────────────┘"

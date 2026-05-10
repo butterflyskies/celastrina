@@ -1,18 +1,18 @@
 #!/usr/bin/bash
 #
-# Celastrina Laptop Installer
+# Celastrina Yoga 9 Installer
 #
-# Deploys celastrina-laptop onto a LUKS2-encrypted btrfs root via
+# Deploys celastrina-yoga9 onto a LUKS2-encrypted btrfs root via
 # bootc install to-filesystem.  Run from a Fedora CoreOS Live environment.
 #
 # Usage:
-#   sudo ./install-laptop.sh [/dev/nvme0n1]
+#   sudo ./install-yoga9.sh [/dev/nvme0n1]
 #
 set -euo pipefail
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
-IMAGE="ghcr.io/butterflyskies/celastrina-laptop:latest"
+IMAGE="ghcr.io/butterflyskies/celastrina-yoga9:latest"
 DISK="${1:-/dev/nvme0n1}"
 TARGET="/mnt"
 
@@ -59,7 +59,7 @@ done
 
 echo ""
 echo "┌──────────────────────────────────────────────┐"
-echo "│  Celastrina Laptop Installer                 │"
+echo "│  Celastrina Yoga 9 Installer                 │"
 echo "│                                              │"
 echo "│  Image: $IMAGE"
 echo "│  Disk:  $DISK"
