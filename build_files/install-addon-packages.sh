@@ -19,8 +19,11 @@ dnf5 install -y \
   fd-find \
   foot \
   fzf \
+  gh \
+  git-lfs \
   grim \
   helm \
+  htop \
   xorg-x11-server-Xwayland qt5-qtwayland qt6-qtwayland \
   iproute-tc iptables-nft nftables \
   jq yq \
@@ -28,6 +31,7 @@ dnf5 install -y \
   kubectl \
   kustomize \
   libguestfs-tools \
+  neovim \
   netcat nmap \
   perf \
   podman-remote \

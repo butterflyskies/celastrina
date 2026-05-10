@@ -3,9 +3,9 @@
 set -euo pipefail
 
 ###############################################################################
-# Laptop firmware installation — Lenovo Yoga 9 2-in-1 14ILL10 (Lunar Lake)
+# Yoga 9 firmware installation — Lenovo Yoga 9 2-in-1 14ILL10 (Lunar Lake)
 #
-# Firmware blobs extracted from the laptop's Windows driver packages.
+# Firmware blobs extracted from the Yoga 9's Windows driver packages.
 # Stored in-repo encrypted via git-crypt (see .gitattributes).
 #
 # Source files live under build_files/firmware/ and are mapped into the

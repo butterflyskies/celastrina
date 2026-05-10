@@ -6,6 +6,16 @@
 
   "rebaseWhen": "never",
 
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["Containerfile(?:\\..*)?$"],
+      "matchStrings": ["ARG RIO_VERSION=(?<currentValue>v\\S+)"],
+      "depNameTemplate": "raphamorim/rio",
+      "datasourceTemplate": "github-releases",
+    },
+  ],
+
   "packageRules": [
     {
       "automerge": true,

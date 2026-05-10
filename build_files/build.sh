@@ -14,6 +14,7 @@ function install-system() {
     /ctx/install-chrome.sh
     /ctx/install-wezterm.sh
     /ctx/install-ghostty.sh
+    /ctx/install-rio.sh
     /ctx/install-observability.sh
     /ctx/install-thunderbolt.sh
     /ctx/configure-xdg-portal.sh
