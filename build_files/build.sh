@@ -13,6 +13,7 @@ function install-system() {
     /ctx/install-1password.sh
     /ctx/install-chrome.sh
     /ctx/install-wezterm.sh
+    /ctx/install-ghostty.sh
     /ctx/install-observability.sh
     /ctx/install-thunderbolt.sh
     /ctx/configure-xdg-portal.sh
