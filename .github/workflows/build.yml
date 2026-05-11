@@ -46,11 +46,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      # This is optional, but if you see that your builds are way too big for the runners, you can enable this by uncommenting the following lines:
-      # - name: Maximize build space
-      #   uses: ublue-os/remove-unwanted-software@517622d6452028f266b7ba4cc9a123b5f58a6b53 # v7
-      #   with:
-      #     remove-codeql: true
+      - name: Maximize build space
+        uses: ublue-os/remove-unwanted-software@517622d6452028f266b7ba4cc9a123b5f58a6b53 # v7
+        with:
+          remove-codeql: true
 
       - name: Mount BTRFS for podman storage
         uses: ublue-os/container-storage-action@main
@@ -181,7 +180,7 @@ jobs:
           cosign sign -y --key env://COSIGN_PRIVATE_KEY \
             "${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.push.outputs.digest }}"
           cosign sign -y --key env://COSIGN_PRIVATE_KEY \
-            --registry-referrers-mode=legacy-tag \
+            --registry-referrers-mode=legacy \
             "${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.push.outputs.digest }}"
         env:
           COSIGN_EXPERIMENTAL: false
