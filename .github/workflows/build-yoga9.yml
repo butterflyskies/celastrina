@@ -51,6 +51,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
+      - name: Maximize build space
+        uses: ublue-os/remove-unwanted-software@517622d6452028f266b7ba4cc9a123b5f58a6b53 # v7
+        with:
+          remove-codeql: true
+
       - name: Decrypt firmware blobs
         env:
           GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
@@ -151,7 +156,7 @@ jobs:
           cosign sign -y --key env://COSIGN_PRIVATE_KEY \
             "${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.push.outputs.digest }}"
           cosign sign -y --key env://COSIGN_PRIVATE_KEY \
-            --registry-referrers-mode=legacy-tag \
+            --registry-referrers-mode=legacy \
             "${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.push.outputs.digest }}"
         env:
           COSIGN_EXPERIMENTAL: false
