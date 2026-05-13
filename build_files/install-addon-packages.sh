@@ -27,6 +27,7 @@ dnf5 install -y \
   xorg-x11-server-Xwayland qt5-qtwayland qt6-qtwayland \
   iproute-tc iptables-nft nftables \
   jq yq \
+  kmscon \
   k9s \
   kubectl \
   kustomize \
