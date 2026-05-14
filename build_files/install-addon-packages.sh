@@ -25,7 +25,7 @@ dnf5 install -y \
   grim \
   helm \
   htop \
-  xorg-x11-server-Xwayland qt5-qtwayland qt6-qtwayland \
+  xorg-x11-server-Xwayland xwayland-satellite qt5-qtwayland qt6-qtwayland \
   iproute-tc iptables-nft nftables \
   jq yq \
   kmscon \
