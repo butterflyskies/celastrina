@@ -8,7 +8,7 @@ COPY cosign.pub /cosign.pub
 
 # Build Rio terminal from source (Wayland + librashader filters)
 FROM rust:latest AS rio-builder
-ARG RIO_VERSION=v0.4.3
+ARG RIO_VERSION=v0.4.4
 RUN apt-get update && apt-get install -y --no-install-recommends \
     cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev glslang-tools
 RUN git clone --depth 1 --branch "$RIO_VERSION" https://github.com/raphamorim/rio.git /rio
