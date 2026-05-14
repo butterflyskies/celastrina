@@ -8,6 +8,7 @@ dnf5 -y copr enable lionheartp/Hyprland
 dnf5 install -y \
   age \
   ansible ansible-lint \
+  autossh \
   bcachefs-tools \
   bpftool bpftrace \
   btrbk \
@@ -32,6 +33,7 @@ dnf5 install -y \
   kubectl \
   kustomize \
   libguestfs-tools \
+  mosh \
   neovim \
   netcat nmap \
   perf \
@@ -44,6 +46,8 @@ dnf5 install -y \
   tilt \
   virt-install virt-manager virt-viewer \
   v4l-utils \
+  waypipe \
+  xpra \
   zoxide \
   zsh zsh-syntax-highlighting
 
