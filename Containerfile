@@ -1,5 +1,5 @@
 # Global build args — must be before the first FROM to use in FROM lines
-ARG BASE_IMAGE=ghcr.io/ublue-os/bazzite-nvidia-open:stable
+ARG BASE_IMAGE=ghcr.io/ublue-os/bazzite-nvidia-open:stable@sha256:4ec09a34a8314ecae92364fcbb289178d7328158e1f7b7c477355240c2a04890
 
 # Allow build scripts to be referenced without being copied into the final image
 FROM scratch AS ctx
@@ -7,7 +7,7 @@ COPY build_files /
 COPY cosign.pub /cosign.pub
 
 # Build Rio terminal from source (Wayland + librashader filters)
-FROM rust:latest AS rio-builder
+FROM rust:latest@sha256:5b1e3484ddcd22a3738c0ec34a5e98bf19382eb295fb6db54295e62379119040 AS rio-builder
 ARG RIO_VERSION=v0.4.3
 RUN apt-get update && apt-get install -y --no-install-recommends \
     cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev glslang-tools
