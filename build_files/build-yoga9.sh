@@ -24,6 +24,9 @@ function install-system() {
 	# Yoga 9-specific: firmware and hardware enablement
 	/ctx/install-yoga9-firmware.sh
 	/ctx/install-yoga9-extras.sh
+
+	# Rebuild initramfs LAST — all dracut config and modules must be in place
+	/ctx/build-initramfs.sh
 }
 
 set +x

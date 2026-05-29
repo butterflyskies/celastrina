@@ -22,6 +22,9 @@ function install-system() {
 	# Laptop-specific: firmware and hardware enablement
 	/ctx/install-laptop-firmware.sh
 	/ctx/install-laptop-extras.sh
+
+	# Rebuild initramfs LAST — all dracut config and modules must be in place
+	/ctx/build-initramfs.sh
 }
 
 set +x

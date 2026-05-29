@@ -21,6 +21,9 @@ function install-system() {
     /ctx/configure-xdg-portal.sh
     /ctx/configure-signing-policy.sh
     /ctx/configure-branding.sh
+
+    # Rebuild initramfs LAST — all dracut config and modules must be in place
+    /ctx/build-initramfs.sh
 }
 
 set +x

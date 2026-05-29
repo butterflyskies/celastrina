@@ -17,10 +17,3 @@ dnf5 install -y \
   clevis-dracut \
   clevis-systemd \
   clevis-pin-tpm2
-
-# Regenerate initramfs with the clevis dracut module so early-boot unlock works.
-# The ostree module is also required for booting ostree-based systems.
-kver=$(cd /usr/lib/modules && echo *)
-dracut -vf --no-hostonly --reproducible --zstd \
-  --add "ostree clevis" \
-  "/usr/lib/modules/$kver/initramfs.img" "$kver"
