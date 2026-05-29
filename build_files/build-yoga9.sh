@@ -20,6 +20,7 @@ function install-system() {
 	/ctx/configure-xdg-portal.sh
 	/ctx/configure-signing-policy.sh
 	CELASTRINA_VARIANT="Yoga 9 (Lunar Lake)" CELASTRINA_IMAGE_NAME="celastrina-yoga9" /ctx/configure-branding.sh
+	/ctx/configure-scx-lavd.sh
 
 	# Yoga 9-specific: firmware and hardware enablement
 	/ctx/install-yoga9-firmware.sh
