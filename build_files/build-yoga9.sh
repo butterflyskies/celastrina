@@ -9,6 +9,7 @@ function install-system() {
 	/ctx/install-ceph.sh
 	/ctx/install-hyprland.sh
 	/ctx/install-addon-packages.sh
+	/ctx/install-clevis.sh
 	/ctx/install-openh264-and-firefox.sh
 	/ctx/install-1password.sh
 	/ctx/install-chrome.sh
@@ -20,10 +21,14 @@ function install-system() {
 	/ctx/configure-xdg-portal.sh
 	/ctx/configure-signing-policy.sh
 	CELASTRINA_VARIANT="Yoga 9 (Lunar Lake)" CELASTRINA_IMAGE_NAME="celastrina-yoga9" /ctx/configure-branding.sh
+	/ctx/configure-scx-lavd.sh
 
 	# Yoga 9-specific: firmware and hardware enablement
 	/ctx/install-yoga9-firmware.sh
 	/ctx/install-yoga9-extras.sh
+
+	# Rebuild initramfs LAST — all dracut config and modules must be in place
+	/ctx/build-initramfs.sh
 }
 
 set +x
