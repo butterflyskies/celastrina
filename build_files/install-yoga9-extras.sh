@@ -59,6 +59,54 @@ balanced=balanced-battery-bazzite
 power-saver=powersave-battery-bazzite
 PPD
 
+# --- Kernel arguments (bootc kargs.d) ---
+
+# bootc applies kargs.d/*.toml at image install/upgrade time.
+# Priority prefix "99-" ensures these run after Bazzite's base entries.
+
+install -d /usr/lib/bootc/kargs.d
+
+# Lunar Lake stability: prevent xe GPU hangs (PSR) and C-state lockups.
+# xe.enable_psr=0   — disables Panel Self Refresh on Intel Xe; avoids display/GPU hang
+# intel_idle.max_cstate=1 — caps CPU idle to C1; prevents deep-sleep-induced hangs on LNL
+install -m644 /dev/stdin /usr/lib/bootc/kargs.d/99-celastrina-yoga9-stability.toml <<'KARGS'
+# Lunar Lake (Intel Arc Xe2) stability parameters for Yoga 9 14ILL10.
+# See: https://gitlab.freedesktop.org/drm/xe/kernel/-/issues (PSR hangs)
+#      https://bugzilla.kernel.org/show_bug.cgi?id=218204 (LNL C-state lockups)
+
+[[add]]
+key = "xe.enable_psr"
+value = "0"
+
+[[add]]
+key = "intel_idle.max_cstate"
+value = "1"
+KARGS
+
+# Strip NVIDIA kargs shipped by the bazzite base image.
+# The yoga9 variant uses bazzite:stable (no NVIDIA), but the base image's
+# kargs.d may still propagate these; remove them so they never appear on boot.
+install -m644 /dev/stdin /usr/lib/bootc/kargs.d/99-celastrina-yoga9-strip-nvidia.toml <<'KARGS'
+# Remove NVIDIA-specific kernel arguments — the Yoga 9 has no discrete GPU.
+# Bazzite:stable may still ship these from its common kargs.d layer.
+
+[[delete]]
+key = "nvidia-drm.modeset"
+value = "1"
+
+[[delete]]
+key = "rd.driver.blacklist"
+value = "nouveau"
+
+[[delete]]
+key = "modprobe.blacklist"
+value = "nouveau"
+
+[[delete]]
+key = "gpu_sched.sched_policy"
+value = "0"
+KARGS
+
 # --- SELinux local policy ---
 # Suppress known denials from ostree/bootc environment:
 #   - bootupd_t running lsblk (user/group resolution, mount info)
