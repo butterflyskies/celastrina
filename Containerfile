@@ -1,5 +1,5 @@
 # Global build args — must be before the first FROM to use in FROM lines
-ARG BASE_IMAGE=ghcr.io/ublue-os/bazzite-nvidia-open:stable@sha256:4ec09a34a8314ecae92364fcbb289178d7328158e1f7b7c477355240c2a04890
+ARG BASE_IMAGE=ghcr.io/ublue-os/bazzite-nvidia-open:stable
 
 # Allow build scripts to be referenced without being copied into the final image
 FROM scratch AS ctx
