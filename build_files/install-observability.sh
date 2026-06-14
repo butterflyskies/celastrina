@@ -5,6 +5,9 @@ set -ouex pipefail
 echo "Installing Grafana Alloy and Prometheus Node Exporter"
 
 # 1. Setup Grafana Repo for Alloy
+# NOTE: Do NOT set sslcacert here. Fedora 44 dropped /etc/pki/tls/certs/ca-bundle.crt
+# (see Changes/droppingOfCertPemFile). Omitting sslcacert lets libcurl use its
+# compiled-in default CA path, which works across Fedora versions.
 cat <<EOF >/etc/yum.repos.d/grafana.repo
 [grafana]
 name=grafana
@@ -14,8 +17,10 @@ enabled=1
 gpgcheck=1
 gpgkey=https://rpm.grafana.com/gpg.key
 sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 EOF
+
+# Import GPG key before rpm-ostree touches the repo
+rpm --import https://rpm.grafana.com/gpg.key
 
 # 2. Pre-create alloy service account and home directory.
 # The alloy RPM %post runs 'useradd -m' which fails on base images that ship
