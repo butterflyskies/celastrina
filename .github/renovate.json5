@@ -19,6 +19,18 @@
   ],
   packageRules: [
     {
+      groupName: 'github-actions',
+      matchManagers: [
+        'github-actions',
+      ],
+    },
+    {
+      groupName: 'docker-dependencies',
+      matchDatasources: [
+        'docker',
+      ],
+    },
+    {
       automerge: true,
       matchUpdateTypes: [
         'pin',
